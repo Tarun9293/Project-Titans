@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
+import Hello from './Hello';
+import Message from './Message';
+import SimpleCard from './CardQuestions';
+import ConditionalRendering from './ConditionalRendering';
+import Form from './Form';
+import Counter from './Counter';
+import Hover from './Hover';
+import './App.css';
+import NavBar from './appBar'
+import WorldCup from './WorldCup'
+import Home from './Home'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+         <Route path="/questions/worldCup">
+            <WorldCup />
+          </Route> 
+          </Switch>
+      </div>
+  </Router>
   );
 }
 
