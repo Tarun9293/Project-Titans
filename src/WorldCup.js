@@ -3,6 +3,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import CardContentItem from './cardComponent'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -10,18 +12,18 @@ const useStyles = makeStyles((theme) => ({
       color:'red'
     },
     content: {
-        backgroundColor: '#ccffff', 
+        backgroundColor: 'black', 
         height: '100vh'
-    }
+    },
   }));
 
-export default function FixedContainer() {
+export default function FixedContainer(props) {
     const classes = useStyles();
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container fixed >
-        <Typography component="div" className={classes.content} />
+      <Container>
+      <CardContentItem />
       </Container>
     </React.Fragment>
   );
