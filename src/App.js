@@ -1,11 +1,4 @@
 
-import Hello from './Hello';
-import Message from './Message';
-import SimpleCard from './CardQuestions';
-import ConditionalRendering from './ConditionalRendering';
-import Form from './Form';
-import Counter from './Counter';
-import Hover from './Hover';
 import './App.css';
 import NavBar from './appBar'
 import WorldCup from './WorldCup'
