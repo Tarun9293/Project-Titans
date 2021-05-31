@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     
     },
     appBar: {
-     backgroundColor: '#1a237e'
+     backgroundColor: '#3a28a7'
     }
   }));
   
@@ -42,9 +42,9 @@ function NavBar() {
             <Typography variant="h6" className={classes.title}>
               TITANS QUIZ
             </Typography>  
-             <Link to="/" className={classes.link}  >Home</Link>   
+             {/* <Link to="/" className={classes.link}  >Home</Link>   
              <Link to="/questions/worldcup" className={classes.link} >WorldCup</Link>   
-            
+             */}
           </Toolbar>
         </AppBar>
       </div>
