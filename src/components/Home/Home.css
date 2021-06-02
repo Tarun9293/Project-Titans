@@ -1,0 +1,58 @@
+.position {
+
+    margin-top: '20%';
+    margin-Left: '10%';
+    justify-Content: 'center';
+    display: 'flex';
+   
+    
+  
+}
+
+.button  {
+    
+    border: '1px solid #c3c3c3';
+    justify-Content: 'center';
+    
+    background-Color: '#5d6cd7';
+    
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  /*   
+      
+    // align-items: flex-end;
+    // marginTop: '20%',
+    // marginLeft: '10%',
+    // left: '-30%' */
+  }
+  
+  
+  .button1 {
+    
+    border: '1px solid #c3c3c3';
+    justify-Content: 'center';
+    
+    background-Color: '#5d6cd7';
+      
+    /* // align-items: flex-end;
+    // marginTop: '20%',
+    // marginLeft: '10%',
+    // left: '-30%' */
+  }
+  
+  @media screen and (max-width: 600px) {
+    .button {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+    .button1 {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }

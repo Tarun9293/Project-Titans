@@ -1,27 +1,23 @@
 
+
 import Button from '@material-ui/core/Button';
 import React from 'react';
-import { useHistory } from 'react-router-dom'
+import './Home.css'
 
 
 
-const position = {
 
-    marginTop: '20%',
-    marginLeft: '10%',
-    justifyContent: 'center',
-    display: 'flex',
-    marginLeft:'10px'
-    
-  
-}
+
 
 const button = {
     
     border: '1px solid #c3c3c3',
     justifyContent: 'center',
-    marginRight: '16px',
-    backgroundColor: '#5d6cd7'
+    backgroundColor: '#5d6cd7',
+    marginTop: '20%',
+     
+    
+    
       
     // align-items: flex-end;
     // marginTop: '20%',
@@ -34,7 +30,8 @@ const button1 = {
     
     border: '1px solid #c3c3c3',
     justifyContent: 'center',
-    marginLeft: '16px',
+    marginTop: '20%',
+    marginLeft: '10%',
     backgroundColor: '#5d6cd7'
       
     // align-items: flex-end;
@@ -44,17 +41,19 @@ const button1 = {
 }
 
 
+
+
 function Home() {
   
     return (
         <React.Fragment>
-         
-        <div style={position}>
-        <Button  style={button} size="large" variant="contained" 
+            <div className="position" >
+            
+        <Button style={button} size="large" variant="contained" 
                      color="secondary" >General</Button>
-        <Button style={button1} size="large" variant="contained" 
+        <Button style={button1}   size="large" variant="contained" 
                      color="secondary">WorldCup</Button>      
-        </div>     
+    </div>
         </React.Fragment>
     )
 }

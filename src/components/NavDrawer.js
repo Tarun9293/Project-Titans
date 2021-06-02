@@ -57,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    // ...theme.mixins.toolbar,
+    // justifyContent: 'flex-end',
   },
   content: {
     flexGrow: 1,
@@ -90,6 +90,7 @@ export default function NavDrawer() {
   };
 
   const handleDrawerClose = () => {
+   
     setOpen(false);
   };
 
@@ -139,9 +140,9 @@ export default function NavDrawer() {
         <List>
           {['Home','General', 'WorldCup'].map((text) => (
             <ListItem button key={text}
-            onClick={() => push(`/${text}`) } style={{color:'white'}} >
+            onClick={() => push(`/${text}`)} style={{color:'white'}} >
               {/* { <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> } */}
-              <ListItemText primary={text} />
+              <ListItemText primary={text} onClick={handleDrawerClose} />
             </ListItem>
           ))}
         </List>
