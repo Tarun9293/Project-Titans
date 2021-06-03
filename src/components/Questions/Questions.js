@@ -41,7 +41,7 @@ import { useHistory } from "react-router";
           <div>
          
             <Typography className={classes.typo }key={questions.data[currQues].id} variant='h5'>
-              {questions.data[currQues].question}
+            {questions.data[currQues].id}.{questions.data[currQues].question}
             </Typography>  
              <Button className={classes.button} size="medium" variant="contained" color="primary" 
             onClick={()=>{showNextQuest(true);setShowAnswer(false)}}>Next Question</Button>
@@ -73,7 +73,7 @@ import { useHistory } from "react-router";
           <div>
         
             <Typography className={classes.typo } key={questions.data[currQues].id}  variant='h5'>
-              {questions.data[currQues].question}
+            {questions.data[currQues].id}.{questions.data[currQues].question}
             </Typography>  
             <Button className={classes.button} size="medium" variant="contained" color="primary" 
             onClick={setValue}>Next Question</Button>
@@ -89,7 +89,7 @@ import { useHistory } from "react-router";
           <div>
 
             <Typography className={classes.typo } key={questions.data[currQues].id}variant='h5'>
-              {questions.data[currQues].question}
+            {questions.data[currQues].id}.{questions.data[currQues].question}
             </Typography>  
             <Button className={classes.button} size="medium" variant="contained" color="primary" 
             onClick={setValue}>Next Question</Button>

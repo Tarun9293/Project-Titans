@@ -8,8 +8,6 @@ import { makeStyles } from '@material-ui/core/styles';
     },
     typo:{
       padding: '10px',
-      marginLeft:'20px',
-      
       color:'white'
     },
     button:{
