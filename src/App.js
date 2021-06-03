@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import React from 'react';
 import {Provider} from 'react-redux'
+import Results from './components/Results/Results';
 function App() {
 
   return (
@@ -32,6 +33,9 @@ function App() {
           </Route> 
          <Route path="/worldCup">
             <WorldCup />
+          </Route> 
+          <Route path="/results">
+            <Results />
           </Route> 
           </Switch>
       </div>

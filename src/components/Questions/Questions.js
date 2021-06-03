@@ -1,11 +1,39 @@
 import { Button, Typography } from '@material-ui/core'
 import React,{useState} from 'react'
 import useStyles from './Styles'
+import { useHistory } from "react-router";
 
 
   function Questions({questions,currQues,setCurrentQues,showAnswer,setShowAnswer}) {
    const classes=useStyles();
+   const history = useHistory();
    const [nextQuest,showNextQuest]=useState(false)
+    console.log(currQues)
+    console.log(showAnswer)
+    console.log(nextQuest)
+    let length=questions.data.length
+
+    function setValue(){
+      if(currQues<length-1){
+      setCurrentQues(currQues+1);
+      }
+      else{
+        history.push("/Results");
+      }
+    }
+    
+    function setValue1(){
+      if(currQues<length-1){
+      showNextQuest(true);
+      setCurrentQues(currQues+1);
+      setShowAnswer(false);
+      }
+      else{
+        history.push("/Results");
+      }
+    }
+   
+
       if(showAnswer) {
         if(nextQuest)
         {
@@ -31,7 +59,7 @@ import useStyles from './Styles'
               {questions.data[currQues].answer}
             </Typography>  
              <Button className={classes.button}size="medium" variant="contained" color="primary" 
-            onClick={()=>{showNextQuest(true);setCurrentQues(currQues+1);setShowAnswer(false);}}>Next Question</Button>
+            onClick={setValue1}>Next Question</Button>
         
         </div>
         ) 
@@ -48,7 +76,7 @@ import useStyles from './Styles'
               {questions.data[currQues].question}
             </Typography>  
             <Button className={classes.button} size="medium" variant="contained" color="primary" 
-            onClick={()=>setCurrentQues(currQues+1)}>Next Question</Button>
+            onClick={setValue}>Next Question</Button>
             <Button className={classes.button} size="medium" variant="contained" 
             color="primary" onClick={()=>setShowAnswer(true)}>Show Answer</Button>
     
@@ -64,7 +92,7 @@ import useStyles from './Styles'
               {questions.data[currQues].question}
             </Typography>  
             <Button className={classes.button} size="medium" variant="contained" color="primary" 
-            onClick={()=>setCurrentQues(currQues+1)}>Next Question</Button>
+            onClick={setValue}>Next Question</Button>
             <Button className={classes.button} size="medium" variant="contained" 
             color="primary" onClick={()=>{setShowAnswer(true);showNextQuest(false);}}>Show Answer</Button>
  

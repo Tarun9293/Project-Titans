@@ -3,6 +3,7 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
 import './Home.css'
+import { Container, Grid,Paper, Typography} from '@material-ui/core'
 
 
 
@@ -46,15 +47,17 @@ const button1 = {
 function Home() {
   
     return (
-        <React.Fragment>
-            <div className="position" >
-            
-        <Button style={button} size="large" variant="contained" 
-                     color="secondary" >General</Button>
-        <Button style={button1}   size="large" variant="contained" 
-                     color="secondary">WorldCup</Button>      
-    </div>
-        </React.Fragment>
+        <main>
+      <Container maxWidth='md'  >
+      <Grid  container spacing={2} alignItems="center" justify="center"style={{ color:"white",marginTop:'50%' }}>
+        <Grid item xs={12}>     
+          <Typography   variant='h1'>
+              LET'S START
+            </Typography> 
+          </Grid>
+          </Grid>
+        </Container>
+        </main>
     )
 }
 

@@ -4,22 +4,7 @@ import React ,{useState} from 'react';
 import {connect} from 'react-redux'
 import { fetchDataSuccess } from '../../redux/worldcup/worldCupActions';
 import Questions from '../Questions/Questions'
-import { makeStyles } from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    backgroundColor:'#5d6cd7',
-    minHeight:'20vh',
-    position: 'relative'
-  },
-  typo:{
-    padding: '10px',
-    marginLeft:'20px',
-    
-    color:'white'
-  }
-}));
+import useStyles from './Styles';
 
 function WorldCup({questions}) {
 

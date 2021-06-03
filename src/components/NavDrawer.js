@@ -14,7 +14,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
+import HomeIcon from '@material-ui/icons/Home';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -118,7 +119,6 @@ export default function NavDrawer() {
           <Typography style={{ color:'white',textDecoration: 'none' }} to='/' component={Link} variant="h6" noWrap>
             TITANS QUIZ
           </Typography>
-          
         </Toolbar>
       </AppBar>
       <Drawer
