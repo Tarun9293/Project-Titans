@@ -1,5 +1,5 @@
-import {FETCH_DATA_REQUEST,FETCH_DATA_SUCCESS} from './worldcupTypes'
-import axios from 'axios'
+import {FETCH_DATA_SUCCESS} from './worldcupTypes'
+
 
 // export const fetchDataRequest = () =>{
 // return{

@@ -1,56 +1,51 @@
-import React,{useState} from 'react';
-import Card from '@material-ui/core/Card';
+
+import { Container, Grid,Paper} from '@material-ui/core'
+import React ,{useState} from 'react';
 import {connect} from 'react-redux'
 import { fetchDataSuccess } from '../../redux/worldcup/worldCupActions';
-import Questions from '../Questions';
-import { Button } from '@material-ui/core';
+import Questions from '../Questions/Questions'
+import { makeStyles } from '@material-ui/core/styles';
 
 
- const card = {
-  backgroundColor: '#5d6cd7',
-  border : '1px',
-  borderStyle: 'solid',
-  borderWidth : '3px',
-  borderColor:'green',
-  display:'flex',
-  justifyContent:'center',
-  height:'50%',
-  width: '60%',
-  marginTop: '10%',
-  marginLeft: '20%' }
-
-  
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    backgroundColor:'#5d6cd7',
+    minHeight:'20vh',
+    position: 'relative'
+  },
+  typo:{
+    padding: '10px',
+    marginLeft:'20px',
+    
+    color:'white'
+  }
+}));
 
 function WorldCup({questions}) {
 
-  console.log(questions)
+  const classes =useStyles();
   const [currQues,setCurrentQues]=useState(0)
   const [showAnswer,setShowAnswer]=useState(false)
-  return (
-     <React.Fragment>
-     <Card style={card}>
-      <Questions 
-      questions={questions}
-      currQues={currQues}
-      setCurrentQues={setCurrentQues}
-      showAnswer={showAnswer}
-      setShowAnswer={setShowAnswer}
-      />
-
-    </Card> 
-
-    {/* {dataQues.data.map(value=>
-    {
-    return(
-      <Button size="medium" variant="contained" color="inherit" onClick={()=>fetchDataSuccess()}style={button}>{value.id}</Button>
+    return (
+      <main>
+      <Container maxWidth='md'  >
+      <Grid  container spacing={2} alignItems="center" justify="center"style={{ minHeight: "100vh" }}>
+        <Grid item xs={12}>     
+          <Paper className={classes.paper} alignItems="center" >
+            <Questions
+             questions={questions}
+             currQues={currQues}
+             setCurrentQues={setCurrentQues}
+             showAnswer={showAnswer}
+             setShowAnswer={setShowAnswer}
+            />
+          </Paper>      
+          </Grid>
+          </Grid>
+        </Container>
+        </main>
     )
-    })
-    } */}
-
-     </React.Fragment>
-  );
 }
-
 
 const mapStateToProps = (state)=>
 {

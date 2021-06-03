@@ -1,4 +1,4 @@
-import {FETCH_DATA_REQUEST,FETCH_DATA_SUCCESS} from './worldcupTypes'
+import {FETCH_DATA_SUCCESS} from './worldcupTypes'
 const initialState = {
     data : [
         { id: 1, question: 'Who won the 1983 WorldCup', answer: 'India' },

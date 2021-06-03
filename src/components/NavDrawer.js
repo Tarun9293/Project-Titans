@@ -13,10 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { Link, useHistory } from 'react-router-dom'
 const drawerWidth = 240;
 
@@ -83,6 +80,8 @@ export default function NavDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const data = ['General','WorldCup'];
+
   const {push}=useHistory()
 
   const handleDrawerOpen = () => {
@@ -90,10 +89,10 @@ export default function NavDrawer() {
   };
 
   const handleDrawerClose = () => {
-   
-    setOpen(false);
+   setOpen(false);
   };
 
+ 
 
 
   return (
@@ -116,7 +115,7 @@ export default function NavDrawer() {
             <MenuIcon />
           </IconButton>
        
-          <Typography style={{ color:'white',textDecoration: 'none' }} to='/Home' component={Link} variant="h6" noWrap>
+          <Typography style={{ color:'white',textDecoration: 'none' }} to='/' component={Link} variant="h6" noWrap>
             TITANS QUIZ
           </Typography>
           
@@ -138,11 +137,10 @@ export default function NavDrawer() {
         </div>
         <Divider />
         <List>
-          {['Home','General', 'WorldCup'].map((text) => (
+          {data.map((text) => (
             <ListItem button key={text}
-            onClick={() => push(`/${text}`)} style={{color:'white'}} >
-              {/* { <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> } */}
-              <ListItemText primary={text} onClick={handleDrawerClose} />
+            onClick={()=>push(`/${text}`)} style={{color:'white'}} >
+              <ListItemText primary={text} onClick={handleDrawerClose}  />
             </ListItem>
           ))}
         </List>

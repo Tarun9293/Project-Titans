@@ -1,6 +1,5 @@
 
 import './App.css';
-import NavBar from './appBar'
 import WorldCup from './components/WorldCup/WorldCup'
 import Home from './components/Home/Home'
 import General from './components/General/General'
@@ -25,7 +24,7 @@ function App() {
       <div className="App">
       <NavDrawer/>
         <Switch>
-          <Route exact path="/Home">
+          <Route exact path="/">
             <Home />
             </Route>
           <Route path="/General">
