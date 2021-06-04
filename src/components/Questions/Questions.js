@@ -8,9 +8,6 @@ import { useHistory } from "react-router";
    const classes=useStyles();
    const history = useHistory();
    const [nextQuest,showNextQuest]=useState(false)
-    console.log(currQues)
-    console.log(showAnswer)
-    console.log(nextQuest)
     let length=questions.data.length
 
     function setValue(){
