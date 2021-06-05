@@ -9,7 +9,6 @@ import { useHistory } from "react-router";
    const history = useHistory();
    const [nextQuest,showNextQuest]=useState(false)
     let length=questions.data.length
-
     function setValue(){
       if(currQues<length-1){
       setCurrentQues(currQues+1);
@@ -69,7 +68,7 @@ import { useHistory } from "react-router";
         return(
           <div>
         
-            <Typography className={classes.typo } key={questions.data[currQues].id}  variant='h5'>
+            <Typography className={classes.typo } key={questions.data[currQues].id[currQues]}  variant='h5'>
             {questions.data[currQues].id}.{questions.data[currQues].question}
             </Typography>  
             <Button className={classes.button} size="medium" variant="contained" color="primary" 

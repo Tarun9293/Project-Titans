@@ -1,13 +1,18 @@
 
 import { Container, Grid,Paper} from '@material-ui/core'
-import React ,{useState} from 'react';
+import React ,{useState,useEffect} from 'react';
 import {connect} from 'react-redux'
-import { fetchDataSuccess } from '../../redux/worldcup/worldCupActions';
+import { fetchData} from '../../redux/worldcup/worldCupActions';
 import Questions from '../Questions/Questions'
 import useStyles from './Styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-function WorldCup({questions}) {
 
+function WorldCup({fetchData,questions}) {
+
+  useEffect(() => {
+    fetchData()
+  },[])
   const classes =useStyles();
   const [currQues,setCurrentQues]=useState(0)
   const [showAnswer,setShowAnswer]=useState(false)
@@ -16,15 +21,17 @@ function WorldCup({questions}) {
       <Container maxWidth='md'  >
       <Grid  container spacing={2} alignItems="center" justify="center"style={{ minHeight: "100vh" }}>
         <Grid item xs={12}>     
-          <Paper className={classes.paper} alignItems="center" >
-            <Questions
-             questions={questions}
-             currQues={currQues}
-             setCurrentQues={setCurrentQues}
-             showAnswer={showAnswer}
-             setShowAnswer={setShowAnswer}
-            />
-          </Paper>      
+          <Paper className={classes.paper} alignItems="center" >   
+          {!questions.isLoading ?
+          <Questions
+          questions={questions}
+          currQues={currQues}
+          setCurrentQues={setCurrentQues}
+          showAnswer={showAnswer}
+          setShowAnswer={setShowAnswer}
+          /> : <CircularProgress color="secondary"/>
+          }
+         </Paper>      
           </Grid>
           </Grid>
         </Container>
@@ -43,7 +50,7 @@ const mapStateToProps = (state)=>
 const mapDispatchToProps =(dispatch)=>
 {
   return{
-    fetchData: ()=> dispatch(fetchDataSuccess())
+    fetchData: ()=> dispatch(fetchData())
   }
 }
 
