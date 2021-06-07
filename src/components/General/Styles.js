@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
       backgroundColor:'#5d6cd7',
       minHeight:'20vh',
-      position: 'relative'
+      position: 'relative',
     },
     typo:{
       padding: '10px',

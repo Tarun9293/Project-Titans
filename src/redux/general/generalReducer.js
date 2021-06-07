@@ -16,7 +16,6 @@ switch(action.type)
         }
     
     case FETCH_DATA_SUCCESS :
-        console.log(state)
         return{
             data : action.payload,
             isLoading : false

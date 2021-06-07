@@ -6,7 +6,7 @@ import { fetchData} from '../../redux/worldcup/worldCupActions';
 import Questions from '../Questions/Questions'
 import useStyles from './Styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import TextField from '@material-ui/core/TextField';
+
 
 
 function General({fetchData,questions}) {

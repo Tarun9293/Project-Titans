@@ -6,6 +6,7 @@ import useStyles from './Styles';
 function Results() {
     const classes=useStyles();
     return (
+     // <TotalScore.Consumer>
       <main>
       <Container maxWidth='md'  >
       <Grid  container spacing={2} alignItems="center" justify="center"style={{ minHeight: "100vh" }}>
@@ -19,6 +20,7 @@ function Results() {
           </Grid>
         </Container>
         </main>
+       // </TotalScore.Consumer>
     )
 }
 
