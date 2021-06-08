@@ -1,5 +1,5 @@
 import { Button, Typography } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import useStyles from './Styles'
 import { useHistory } from "react-router";
 import TextField from '@material-ui/core/TextField';
@@ -13,8 +13,9 @@ function Questions({ questions, currQues, setCurrentQues}) {
   const [checkAnswer, setCheckAnswer] = useState(false)
   const [score, setScore] = useState(0)
   let length = questions.data.length
+  console.log(score)
   function setPreviousQues() {
-    setCurrentQues(currQues);
+    setCurrentQues(currQues+1);
     setCheckAnswer(false);
     setanswerValue('')
    
@@ -25,16 +26,17 @@ function Questions({ questions, currQues, setCurrentQues}) {
       setCurrentQues(currQues + 1);
     }
     else {
-      history.push("/Results");
+      history.push('/Results');
+      history.push(
+        {
+          customNameData : score
+      });
     }
   }
 
   const checkAnswerValue = () => {
-
     let currentAnswer = questions.data[currQues].answer.toLocaleLowerCase()
-    console.log(currentAnswer)
     let storedAnswer=answerValue.toLocaleLowerCase()
-    console.log(storedAnswer)
     if (currentAnswer.includes(storedAnswer)) {
       setcorrectAnswer(true);
       setCheckAnswer(true);
@@ -44,15 +46,12 @@ function Questions({ questions, currQues, setCurrentQues}) {
       setcorrectAnswer(false);
       setCheckAnswer(true);
     }
-
   }
 
-  const TotalScore = React.createContext();
+
 
     return (
-     //  <TotalScore.Provider  value={5}>
       <div>
-
         { !checkAnswer ? (
           <React.Fragment>
             <Typography className={classes.typo} key={questions.data[currQues].id[currQues]} variant='h5'>
@@ -63,6 +62,7 @@ function Questions({ questions, currQues, setCurrentQues}) {
               value={answerValue}
               size="medium"
               variant="filled"
+              autoComplete="off"
               InputProps={{
                 className: classes.input
               }}
@@ -99,7 +99,6 @@ function Questions({ questions, currQues, setCurrentQues}) {
             </React.Fragment>)
         }
       </div>
-     //  </TotalScore.Provider>
     )
   }
  

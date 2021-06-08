@@ -22,7 +22,7 @@ function General({fetchData,questions}) {
       <Container maxWidth='md'  >
       <Grid  container spacing={2} alignItems="center" justify="center"style={{ minHeight: "100vh" }}>
         <Grid item xs={12}>    
-          <Paper className={classes.paper} alignItems="center" >   
+          <Paper className={classes.paper} >   
           {!questions.isLoading ?
           <Questions
           questions={questions}
