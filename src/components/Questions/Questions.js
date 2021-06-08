@@ -14,10 +14,20 @@ function Questions({ questions, currQues, setCurrentQues}) {
   const [score, setScore] = useState(0)
   let length = questions.data.length
   console.log(score)
+
   function setPreviousQues() {
-    setCurrentQues(currQues+1);
-    setCheckAnswer(false);
-    setanswerValue('')
+    if (currQues < length - 1) {
+      setCurrentQues(currQues+1);
+      setCheckAnswer(false);
+      setanswerValue('')
+    }
+    else {
+      history.push('/Results');
+      history.push(
+        {
+          customNameData : score
+      });
+    }
    
   }
 
