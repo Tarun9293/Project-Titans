@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     },
     typo:{
       padding: '10px',
-      color:'white'
+      color:'white',
     }
   }));
 

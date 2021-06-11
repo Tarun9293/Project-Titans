@@ -1,7 +1,7 @@
 import {FETCH_DATA_SUCCESS,FETCH_DATA_REQUEST} from './generalTypes'
 const initialState = {
     data : [],
-    isLoading : true
+    isLoading : true,
 }
 
 

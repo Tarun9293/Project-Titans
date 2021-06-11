@@ -1,9 +1,10 @@
 import { Button, Typography } from '@material-ui/core'
-import React, { useState} from 'react'
+import React, { useState,useReducer} from 'react'
 import useStyles from './Styles'
 import { useHistory } from "react-router";
 import { Field, reduxForm } from 'redux-form';
 import {renderTextField} from './textField'
+import {connect} from 'react-redux'
 
 
 
@@ -20,27 +21,38 @@ const required =(value)=>
   return undefined
 }
 
+const reducer=(state,action)=>
+{
+  switch(action)
+  {
+    case 'increaseScore':
+      return state +1
+      default:
+        return state
+  }
+}
 
-
-function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
+function Questions({ questions, currQues,showTimer,setCurrentQues,checkAnswer,setCheckAnswer,handleSubmit,valid}) {
   const classes = useStyles();
   const history = useHistory();
   const [answerValue, setanswerValue] = useState('')
   const [correctAnswer, setcorrectAnswer] = useState(false)
-  const [checkAnswer, setCheckAnswer] = useState(false)
-  const [score, setScore] = useState(0)
+  
+  const score=0
   let length = questions.data.length
-
+  const [Totalscore,dispatch]=useReducer(reducer,score)
+ 
   function setPreviousQues() {
     if (currQues < length - 1) {
       setCurrentQues(currQues+1);
       setCheckAnswer(false);
+      showTimer(false);
     }
     else {
       history.push('/Results');
       history.push(
         {
-          customNameData : score
+          customNameData : Totalscore
       });
     }
    
@@ -49,12 +61,14 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
   function setNextQuestion() {
     if (currQues < length - 1) {
       setCurrentQues(currQues + 1);
+      showTimer(true);
+      setTimeout(() => {  showTimer(false); }, 1);
     }
     else {
       history.push('/Results');
       history.push(
         {
-          customNameData : score
+          customNameData : Totalscore
       });
     }
   }
@@ -78,11 +92,13 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
     if (count >  0) {
       setcorrectAnswer(true);
       setCheckAnswer(true);
-      setScore(score+1);
+      showTimer(true);
+      dispatch('increaseScore')
     }
     else {
       setcorrectAnswer(false);
       setCheckAnswer(true);
+      showTimer(true);
     }
   }
 
@@ -149,4 +165,5 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
   })(Questions);
   
 
+  
 export default Questions

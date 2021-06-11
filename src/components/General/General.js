@@ -6,6 +6,8 @@ import { fetchData} from '../../redux/worldcup/worldCupActions';
 import Questions from '../Questions/Questions'
 import useStyles from './Styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Timer from '../Timer';
+import { SignalCellularNull } from '@material-ui/icons';
 
 
 
@@ -17,10 +19,13 @@ function General({fetchData,questions}) {
   const classes =useStyles();
   const [currQues,setCurrentQues]=useState(0)
   const [showAnswer,setShowAnswer]=useState(false)
+  const [checkAnswer, setCheckAnswer] = useState(false)
+  const [timer, showTimer] = useState(false)
+
     return (
       <main>
-      <Container maxWidth='md'  >
-      <Grid  container spacing={2} alignItems="center" justify="center"style={{ minHeight: "100vh" }}>
+      <Container >
+      <Grid  container spacing={5} alignItems="center" justify="center" style={{ minHeight: "100vh" }}>
         <Grid item xs={12}>    
           <Paper className={classes.paper} >   
           {!questions.isLoading ?
@@ -30,11 +35,25 @@ function General({fetchData,questions}) {
           setCurrentQues={setCurrentQues}
           showAnswer={showAnswer}
           setShowAnswer={setShowAnswer}
+          checkAnswer={checkAnswer}
+          setCheckAnswer={setCheckAnswer}
+          timer={timer}
+          showTimer={showTimer}
           /> : <CircularProgress color="secondary"/>
           }
-         </Paper>             
+         </Paper>   
+          <Paper style={{backgroundColor: 'transparent',boxShadow: 'none',marginTop:'5%'}}>
+            {!timer ?
+           <Timer questions={questions} checkAnswer={checkAnswer} 
+           setCurrentQues={setCurrentQues} 
+           currQues={currQues} timer={timer}
+           showTimer={showTimer}
+           />:null}
+           </Paper>          
+          </Grid>  
+          
           </Grid>
-          </Grid>
+
         </Container>
         </main>
     )
