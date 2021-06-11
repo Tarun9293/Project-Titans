@@ -1,6 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 import useStyles from './Styles'
-
+import { Typography } from '@material-ui/core'
 
  export const renderTextField = ({
     input,
@@ -28,8 +28,9 @@ import useStyles from './Styles'
       size="medium"
       variant="filled"
       autoComplete="off" 
-      
+       autoFocus="true"
     />
+     {touched && error && <Typography style={{color:'red'}}>{error}</Typography>}
  
   </div>
   )

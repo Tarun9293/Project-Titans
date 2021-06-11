@@ -5,10 +5,7 @@ import { useHistory } from "react-router";
 import { Field, reduxForm } from 'redux-form';
 import {renderTextField} from './textField'
 
-const onSubmit =(values)=>
-{
-  console.log(values)
-}
+
 
 const required =(value)=>
 {
@@ -16,8 +13,14 @@ const required =(value)=>
   {
     return 'This field is required'
   }
+  if(value && !/^\S+(?:\s+\S+)*$/i.test(value))
+  {
+    return 'No Leading/Trailing Spaces'
+  }
   return undefined
 }
+
+
 
 function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
   const classes = useStyles();
@@ -32,7 +35,6 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
     if (currQues < length - 1) {
       setCurrentQues(currQues+1);
       setCheckAnswer(false);
-      setanswerValue('')
     }
     else {
       history.push('/Results');
@@ -59,8 +61,21 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
 
   const checkAnswerValue = () => {
     let currentAnswer = questions.data[currQues].answer.toLocaleLowerCase()
+    let answer=currentAnswer.split(' ')
+    console.log(answer)
     let storedAnswer=answerValue.toLocaleLowerCase()
-    if (currentAnswer.includes(storedAnswer)) {
+    console.log(storedAnswer)
+    let count=0;
+    answer.forEach(value=>
+      {
+      if (value===storedAnswer) {
+        console.log(value)
+        console.log(storedAnswer)
+       count=count + 1;
+      }
+    })
+   console.log(count)
+    if (count >  0) {
       setcorrectAnswer(true);
       setCheckAnswer(true);
       setScore(score+1);
@@ -81,7 +96,7 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
               {questions.data[currQues].id}.{questions.data[currQues].question}
             </Typography>
             <form  onSubmit={handleSubmit}>
-              <Field  onInput={(e) => setanswerValue(e.target.value)} 
+              <Field  onChange={(e) => setanswerValue(e.target.value)} 
               value={answerValue} 
               name="answer" 
               component={renderTextField} 
@@ -93,7 +108,7 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
                 className: classes.floatingLabelFocusStyle,
               }}
               />
-              <Button className={classes.button} size="medium" variant="contained" color="primary"
+              <Button disabled={!valid} className={classes.button} size="medium" variant="contained" color="primary"
                 onClick={setNextQuestion}>Next Question</Button>
               <Button disabled={!valid} onClick={() => {
                checkAnswerValue();
@@ -111,7 +126,7 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
                 {questions.data[currQues].answer}
               </Typography>
               <Button className={classes.button} size="medium" variant="contained" color="primary"
-                onClick={setPreviousQues}>Back</Button>
+                onClick={setPreviousQues}>Next Question</Button>
             </React.Fragment>
             :
             <React.Fragment>
@@ -120,7 +135,7 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
                 Correct Answer : {questions.data[currQues].answer}
               </Typography>
               <Button className={classes.button} size="medium" variant="contained" color="primary"
-                onClick={setPreviousQues}>Back</Button>
+                onClick={setPreviousQues}>Next Question</Button>
             </React.Fragment>)
         }
       </div>
@@ -129,7 +144,7 @@ function Questions({ questions, currQues, setCurrentQues,handleSubmit,valid}) {
  
   Questions = reduxForm({
     form: 'answer',
-    onSubmit,
+    
     
   })(Questions);
   
