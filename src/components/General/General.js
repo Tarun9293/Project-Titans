@@ -7,7 +7,7 @@ import Questions from '../Questions/Questions'
 import useStyles from './Styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Timer from '../Timer';
-import { SignalCellularNull } from '@material-ui/icons';
+import {Typography } from '@material-ui/core'
 
 
 
@@ -26,8 +26,21 @@ function General({fetchData,questions}) {
       <main>
       <Container >
       <Grid  container spacing={5} alignItems="center" justify="center" style={{ minHeight: "100vh" }}>
-        <Grid item xs={12}>    
-          <Paper className={classes.paper} >   
+        <Grid item xs={12}>   
+        {
+          !questions.isLoading ?
+        questions.data[currQues].id % 2==0 ?
+        (       
+        <Paper style={{backgroundColor: 'transparent',boxShadow: 'none',marginTop:'5%'}}>
+          <Typography style={{color:'white',padding:'10px'}} variant='h3'>Team B</Typography>
+        </Paper> 
+        ) :  (<Paper style={{backgroundColor: 'transparent',boxShadow: 'none',marginTop:'5%'}}>
+        <Typography style={{color:'white',padding:'10px'}} variant='h3'>Team A</Typography>
+      </Paper> 
+      ):null 
+      }
+                          
+       <Paper className={classes.paper} >          
           {!questions.isLoading ?
           <Questions
           questions={questions}

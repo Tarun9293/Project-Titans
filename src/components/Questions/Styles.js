@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
       position: 'relative'
     },
     typo:{
-      padding: '10px',
+      padding: '30px',
       color:'white'
     },
     typoRight:{
@@ -54,7 +54,7 @@ import { makeStyles } from '@material-ui/core/styles';
       fontSize:20
       
   },
-  floatingLabelFocusStyle: {
+  floatinglabelfocusstyle: {
     color: "white",
   }
   }));

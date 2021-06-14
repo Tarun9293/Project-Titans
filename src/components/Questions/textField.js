@@ -19,16 +19,14 @@ import { Typography } from '@material-ui/core'
       marginTop: 'auto',
       fontWeight: 500
     }}
-      hintText={label}
-      floatingLabelText={label}
-      errorText={touched && error}
+      hinttext={label}
+      floatinglabeltext={label}    
       {...input}
       {...custom}
       label="Enter Answer..."
       size="medium"
       variant="filled"
       autoComplete="off" 
-       autoFocus="true"
     />
      {touched && error && <Typography style={{color:'red'}}>{error}</Typography>}
  
