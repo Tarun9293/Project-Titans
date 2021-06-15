@@ -2,13 +2,12 @@
 import { Container, Grid,Paper, Typography} from '@material-ui/core'
 import React from 'react';
 import useStyles from './Styles';
-import { useLocation } from "react-router-dom";
+import {connect} from 'react-redux'
 
 
 
-function Results(props) {
+function Results({questions}) {
     const classes=useStyles();
-    const location = useLocation();
     return (
       <main>
       <Container maxWidth='md'  >
@@ -19,7 +18,10 @@ function Results(props) {
               Your Quiz is Over ! 
             </Typography>
             <Typography  className={classes.typo } variant='h5'>
-              Total Score : {location.customNameData}
+              Team A Score : {questions.scoreA}
+            </Typography>
+            <Typography  className={classes.typo } variant='h5'>
+              Team B Score : {questions.scoreB}
             </Typography>
           </Paper>      
           </Grid>
@@ -30,4 +32,11 @@ function Results(props) {
 }
 
 
-export default Results
+const mapStateToProps = (state)=>
+{
+  return{
+    questions : state.general
+  }
+}
+
+export default connect(mapStateToProps)(Results)

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-import { Container, Grid,Paper,Typography} from '@material-ui/core'
+import { Container, Grid,Typography} from '@material-ui/core'
 
 function Home() {
   

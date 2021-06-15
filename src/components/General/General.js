@@ -2,7 +2,7 @@
 import { Container, Grid,Paper} from '@material-ui/core'
 import React ,{useState,useEffect} from 'react';
 import {connect} from 'react-redux'
-import { fetchData} from '../../redux/worldcup/worldCupActions';
+import { fetchData,increaseScoreA,increaseScoreB} from '../../redux/general/generalActions';
 import Questions from '../Questions/Questions'
 import useStyles from './Styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -11,7 +11,7 @@ import {Typography } from '@material-ui/core'
 
 
 
-function General({fetchData,questions}) {
+function General({fetchData,questions,ScoreA,ScoreB}) {
 
   useEffect(() => {
     fetchData()
@@ -29,7 +29,7 @@ function General({fetchData,questions}) {
         <Grid item xs={12}>   
         {
           !questions.isLoading ?
-        questions.data[currQues].id % 2==0 ?
+        questions.data[currQues].id % 2===0 ?
         (       
         <Paper style={{backgroundColor: 'transparent',boxShadow: 'none',marginTop:'5%'}}>
           <Typography style={{color:'white',padding:'10px'}} variant='h3'>Team B</Typography>
@@ -52,6 +52,8 @@ function General({fetchData,questions}) {
           setCheckAnswer={setCheckAnswer}
           timer={timer}
           showTimer={showTimer}
+          ScoreA={ScoreA}
+          ScoreB={ScoreB}
           /> : <CircularProgress color="secondary"/>
           }
          </Paper>   
@@ -63,10 +65,8 @@ function General({fetchData,questions}) {
            showTimer={showTimer}
            />:null}
            </Paper>          
-          </Grid>  
-          
+          </Grid>           
           </Grid>
-
         </Container>
         </main>
     )
@@ -74,7 +74,6 @@ function General({fetchData,questions}) {
 
 const mapStateToProps = (state)=>
 {
-  
   return{
     questions : state.general
   }
@@ -83,7 +82,9 @@ const mapStateToProps = (state)=>
 const mapDispatchToProps =(dispatch)=>
 {
   return{
-    fetchData: ()=> dispatch(fetchData())
+    fetchData: ()=> dispatch(fetchData()),
+    ScoreA:()=>dispatch(increaseScoreA()),
+    ScoreB:()=>dispatch(increaseScoreB())
   }
 }
 

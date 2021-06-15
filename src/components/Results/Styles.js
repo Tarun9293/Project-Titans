@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
       position: 'relative',
     },
     typo:{
-      padding: '30px',
+      padding: '10px',
       color:'white',
     }
   }));

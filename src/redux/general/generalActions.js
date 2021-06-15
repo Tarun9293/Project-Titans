@@ -1,4 +1,4 @@
-import {FETCH_DATA_SUCCESS,FETCH_DATA_REQUEST} from './generalTypes'
+import {FETCH_DATA_SUCCESS,FETCH_DATA_REQUEST, INCREASE_SCORE_B,INCREASE_SCORE_A} from './generalTypes'
 import axios from 'axios'
 
 
@@ -14,6 +14,19 @@ export const fetchDataSuccess = (question) =>{
         payload: question
     }
     }
+
+    export const increaseScoreA = () =>{
+        return{
+            type: INCREASE_SCORE_A
+                               
+        }
+        }
+        export const increaseScoreB = () =>{
+            return{
+                type: INCREASE_SCORE_B
+                            
+            }
+            }
 
 
 

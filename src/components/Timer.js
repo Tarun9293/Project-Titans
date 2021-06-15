@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Typography } from '@material-ui/core'
-import { useHistory } from "react-router";
-
-
 
 
 function Timer({currQues,setCurrentQues,questions}) {

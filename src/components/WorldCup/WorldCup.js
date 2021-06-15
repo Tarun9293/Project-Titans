@@ -1,12 +1,10 @@
 
-import { Container, Grid,Paper} from '@material-ui/core'
-import React ,{useState,useEffect} from 'react';
-import {connect} from 'react-redux'
-import { fetchData} from '../../redux/worldcup/worldCupActions';
-import useStyles from './Styles';
+import { Container, Grid} from '@material-ui/core'
+import React  from 'react';
 
 
-function WorldCup({fetchData}) {
+
+function WorldCup() {
 
     return (
       <main>

@@ -1,11 +1,9 @@
 import { Button, Typography } from '@material-ui/core'
-import React, { useState,useReducer} from 'react'
+import React, { useState} from 'react'
 import useStyles from './Styles'
 import { useHistory } from "react-router";
 import { Field, reduxForm } from 'redux-form';
-import {renderTextField} from './textField'
-import {connect} from 'react-redux'
-
+import {renderTextField} from './textField';
 
 
 const required =(value)=>
@@ -21,27 +19,14 @@ const required =(value)=>
   return undefined
 }
 
-const reducer=(state,action)=>
-{
-  switch(action)
-  {
-    case 'increaseScore':
-      return state +1
-      default:
-        return state
-  }
-}
-
-function Questions({ questions, currQues,showTimer,setCurrentQues,checkAnswer,setCheckAnswer,handleSubmit,valid}) {
+function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,setCheckAnswer,handleSubmit,valid,ScoreA,ScoreB}) {
   const classes = useStyles();
   const history = useHistory();
   const [answerValue, setanswerValue] = useState('')
   const [correctAnswer, setcorrectAnswer] = useState(false)
-  
-  const score=0
+
   let length = questions.data.length
-  const [Totalscore,dispatch]=useReducer(reducer,score)
- 
+
   function setPreviousQues() {
     if (currQues < length - 1) {
       setCurrentQues(currQues+1);
@@ -50,10 +35,6 @@ function Questions({ questions, currQues,showTimer,setCurrentQues,checkAnswer,se
     }
     else {
       history.push('/Results');
-      history.push(
-        {
-          customNameData : Totalscore
-      });
     }
    
   }
@@ -66,34 +47,31 @@ function Questions({ questions, currQues,showTimer,setCurrentQues,checkAnswer,se
     }
     else {
       history.push('/Results');
-      history.push(
-        {
-          customNameData : Totalscore
-      });
     }
   }
 
   const checkAnswerValue = () => {
     let currentAnswer = questions.data[currQues].answer.toLocaleLowerCase()
     let answer=currentAnswer.split(' ')
-    console.log(answer)
     let storedAnswer=answerValue.toLocaleLowerCase()
-    console.log(storedAnswer)
     let count=0;
     answer.forEach(value=>
       {
       if (value===storedAnswer) {
-        console.log(value)
-        console.log(storedAnswer)
        count=count + 1;
       }
     })
-   console.log(count)
     if (count >  0) {
       setcorrectAnswer(true);
       setCheckAnswer(true);
       showTimer(true);
-      dispatch('increaseScore')
+      if(questions.data[currQues].id % 2 ===0)
+      {
+        ScoreB()
+      }
+      else{
+      ScoreA()
+      }
     }
     else {
       setcorrectAnswer(false);
