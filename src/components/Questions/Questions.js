@@ -24,6 +24,7 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
   const history = useHistory();
   const [answerValue, setanswerValue] = useState('')
   const [correctAnswer, setcorrectAnswer] = useState(false)
+ 
 
   let length = questions.data.length
 
@@ -32,21 +33,15 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
       setCurrentQues(currQues+1);
       setCheckAnswer(false);
       showTimer(false);
+      
     }
-    else {
-      history.push('/Results');
-    }
-   
   }
 
   function setNextQuestion() {
     if (currQues < length - 1) {
       setCurrentQues(currQues + 1);
       showTimer(true);
-      setTimeout(() => {  showTimer(false); }, 1);
-    }
-    else {
-      history.push('/Results');
+      setTimeout(() => {  showTimer(false); }, 1); 
     }
   }
 
@@ -86,7 +81,7 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
       <div>
         { !checkAnswer ? (
           <React.Fragment>
-            <Typography className={classes.typo} key={questions.data[currQues].id[currQues]} variant='h5'>
+            <Typography className={classes.typo} key={questions.data[currQues].id} variant='h5'>
               {questions.data[currQues].id}.{questions.data[currQues].question}
             </Typography>
             <form  onSubmit={handleSubmit}>
@@ -102,8 +97,11 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
                 className: classes.floatingLabelFocusStyle,
               }}
               />
+              {questions.data[currQues].id===length ?
               <Button disabled={!valid} className={classes.button} size="medium" variant="contained" color="primary"
+              onClick={()=>history.push('/Results')}>VIEW SCORES</Button>:<Button disabled={!valid} className={classes.button} size="medium" variant="contained" color="primary"
                 onClick={setNextQuestion}>Next Question</Button>
+              }
               <Button disabled={!valid} onClick={() => {
                checkAnswerValue();
                }} color="primary" 
@@ -116,11 +114,13 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
           (correctAnswer ?
             <React.Fragment>
               <Typography className={classes.typoRight} variant='h5'>Your Answer is Right!</Typography>
-              <Typography className={classes.typo} key={questions.data[currQues].id[currQues]} variant='h5'>
+              <Typography className={classes.typo} key={questions.data[currQues].id} variant='h5'>
                 {questions.data[currQues].answer}
               </Typography>
-              <Button className={classes.button} size="medium" variant="contained" color="primary"
-                onClick={setPreviousQues}>Next Question</Button>
+              {questions.data[currQues].id===length ?
+              <Button disabled={!valid} className={classes.button} size="medium" variant="contained" color="primary"
+              onClick={()=>history.push('/Results')}>VIEW SCORES</Button>:<Button className={classes.button} size="medium" variant="contained" color="primary"
+                onClick={setPreviousQues}>Next Question</Button>}
             </React.Fragment>
             :
             <React.Fragment>
@@ -128,8 +128,10 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
               <Typography className={classes.typo} key={questions.data[currQues].id[currQues]} variant='h5'>
                 Correct Answer : {questions.data[currQues].answer}
               </Typography>
-              <Button className={classes.button} size="medium" variant="contained" color="primary"
-                onClick={setPreviousQues}>Next Question</Button>
+              {questions.data[currQues].id===length ?
+              <Button disabled={!valid} className={classes.button} size="medium" variant="contained" color="primary"
+              onClick={()=>history.push('/Results')}>VIEW SCORES</Button>:<Button className={classes.button} size="medium" variant="contained" color="primary"
+                onClick={setPreviousQues}>Next Question</Button>}
             </React.Fragment>)
         }
       </div>

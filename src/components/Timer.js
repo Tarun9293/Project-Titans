@@ -1,10 +1,12 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
+import { useHistory } from "react-router";
 
 
 function Timer({currQues,setCurrentQues,questions}) {
     
     let length = questions.data.length
+    const history = useHistory();
     const [seconds, setSeconds] = React.useState(20);
     
     React.useEffect(() => {
@@ -16,8 +18,8 @@ function Timer({currQues,setCurrentQues,questions}) {
                 setCurrentQues(currQues + 1)
                 setSeconds(20);
             }
-            else if(currQues <= length - 1){
-                clearTimeout();
+            else {
+                history.push('/Results')
             }
         }
         return () => clearTimeout();
