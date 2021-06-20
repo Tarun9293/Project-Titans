@@ -27,7 +27,7 @@ function Timer({currQues,setCurrentQues,questions}) {
 
     return (
     
-        <Typography style={{color:'white'}} variant='h5'>
+        <Typography style={{color:'black'}} variant='h5'>
            Time Remaining: {seconds}
         </Typography>
     
