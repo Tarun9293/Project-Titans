@@ -30,12 +30,13 @@ function Play() {
         <React.Fragment>
           <CssBaseline />
             <Container maxWidth="sm">
-                <h1 style={{ marginTop: '10%' }}>Choose the section to kickstart!!!</h1>
                 <Grid container justify="center" spacing={8}>
                     <Grid container
                         direction="row"
                         justify="center"
                         alignItems="baseline" style={{ marginTop: '30%' }}>
+                        <h1>Choose the section to kickstart!!!</h1>
+                            
                         <Button variant="contained" color="primary"
                             className={classes.paper}
                             onClick={() => push(`/${'General'}`)} style={{ color: 'black', opacity: '1' }}>General</Button></Grid>
