@@ -34,8 +34,8 @@ function Play() {
                     <Grid container
                         direction="row"
                         justify="center"
-                        alignItems="baseline" style={{ marginTop: '30%' }}>
-                        <h1>Choose the section to kickstart!!!</h1>
+                        alignItems="baseline" style={{ marginTop: '40%' }}>
+                        {/* <h1>Choose the section to kickstart!!!</h1> */}
                             
                         <Button variant="contained" color="primary"
                             className={classes.paper}
