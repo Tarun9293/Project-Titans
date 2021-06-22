@@ -20,8 +20,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Router>
-        <React.Fragment>
+      <Router>      
           <div className="App">
             {/* <NavDrawer /> */}
             <Switch>
@@ -42,7 +41,6 @@ function App() {
               </Route>
             </Switch>
           </div>
-        </React.Fragment>
       </Router>
     </Provider>
   );

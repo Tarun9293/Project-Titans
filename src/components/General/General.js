@@ -7,7 +7,7 @@ import Questions from '../Questions/Questions'
 import useStyles from './Styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Timer from '../Timer';
-import {Typography } from '@material-ui/core'
+import {Typography,Button } from '@material-ui/core'
 
 
 
@@ -21,6 +21,7 @@ function General({fetchData,questions,ScoreA,ScoreB}) {
   const [showAnswer,setShowAnswer]=useState(false)
   const [checkAnswer, setCheckAnswer] = useState(false)
   const [timer, showTimer] = useState(false)
+  const [timerStart, setTimerStart] = useState(false)
 
     return (
       <main>
@@ -54,15 +55,22 @@ function General({fetchData,questions,ScoreA,ScoreB}) {
           showTimer={showTimer}
           ScoreA={ScoreA}
           ScoreB={ScoreB}
+          setTimerStart={setTimerStart}
           /> : <CircularProgress color="secondary"/>
           }
          </Paper>   
           <Paper style={{backgroundColor: 'transparent',boxShadow: 'none',marginTop:'5%'}}>
-            {!timer ?
+            {!timerStart?
+          (<Button variant="contained" color="primary" className={classes.button}
+          onClick={()=>{setTimerStart(true)}}
+          >Start Timer</Button>):
+            
+            !timer ?
            <Timer questions={questions} checkAnswer={checkAnswer} 
            setCurrentQues={setCurrentQues} 
            currQues={currQues} timer={timer}
            showTimer={showTimer}
+           setTimerStart={setTimerStart}
            />:null}
            </Paper>          
           </Grid>           

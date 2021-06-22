@@ -16,7 +16,9 @@ import { Typography } from '@material-ui/core'
       marginRight: 'auto',            
       paddingBottom: 0,
       marginTop: 'auto',
-      fontWeight: 500
+      fontWeight: 500,
+      border: '2px solid black',
+      borderStyle: 'solid',
     }}
       hinttext={label}
       floatinglabeltext={label}    

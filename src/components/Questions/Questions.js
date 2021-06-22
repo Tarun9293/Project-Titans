@@ -19,7 +19,7 @@ const required =(value)=>
   return undefined
 }
 
-function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,setCheckAnswer,handleSubmit,valid,ScoreA,ScoreB}) {
+function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,setCheckAnswer,handleSubmit,setTimerStart,valid,ScoreA,ScoreB}) {
   const classes = useStyles();
   const history = useHistory();
   const [answerValue, setanswerValue] = useState('')
@@ -33,13 +33,14 @@ function Questions({ questions,currQues,showTimer,setCurrentQues,checkAnswer,set
       setCurrentQues(currQues+1);
       setCheckAnswer(false);
       showTimer(false);
-      
+      setTimerStart(false)
     }
   }
 
   function setNextQuestion() {
     if (currQues < length - 1) {
       setCurrentQues(currQues + 1);
+      setTimerStart(false)
       showTimer(true);
       setTimeout(() => {  showTimer(false); }, 1); 
     }

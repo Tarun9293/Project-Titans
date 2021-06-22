@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core'
 import { useHistory } from "react-router";
 
 
-function Timer({currQues,setCurrentQues,questions}) {
+function Timer({currQues,setCurrentQues,setTimerStart,questions}) {
     
     let length = questions.data.length
     const history = useHistory();
@@ -15,6 +15,7 @@ function Timer({currQues,setCurrentQues,questions}) {
         } else {
 
             if (currQues < length - 1) {
+                setTimerStart(false)
                 setCurrentQues(currQues + 1)
                 setSeconds(20);
             }
