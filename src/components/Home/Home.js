@@ -1,27 +1,15 @@
 import React from 'react';
 import './Home.css'
-import { Container, Grid, Paper} from '@material-ui/core'
+import { Container, Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
-
+import useStyles from './Styles'
 
 
 function Home() {
   const classes = useStyles();
-  const {push}=useHistory()
+  const { push } = useHistory()
   return (
     // <main>
     //   <Container maxWidth='md'  >
@@ -41,28 +29,16 @@ function Home() {
     // </main>
 
     <div className={classes.root}>
-      <Grid container spacing={5}>
-        <Grid
-          container
-          direction="row"
-          justify="center"
+      <Grid container spacing={3} xs={12}>
+        <Grid item xs={12}       
+
           alignItems="baseline"
-          style={{ marginTop: "250px" }}
-        >
-          <Button variant="contained" color="primary"
-            className={classes.paper} style={{ width: '190px', height: '80px', lineHeight: '45px', fontSize: '16px' }}
+        ><Paper className={classes.paper} style={{backgroundColor: 'transparent',boxShadow: 'none'}}>
+          <Button className={classes.button} variant="contained" color="primary"
             onClick={() => push(`/${'Play'}`)} style={{ color: 'black', opacity: '1' }}>Play Quiz</Button>
-        </Grid>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="baseline"
-          style={{ marginTop: "20px" }}
-        >
-          <Button variant="contained" color="primary"
-            className={classes.paper} style={{ width: '190px', height: '80px', lineHeight: '45px', fontSize: '16px' }}
-            onClick={() => push(`/${'text'}`)} style={{ color: 'black', opacity: '1' }}>Create Quiz</Button>
+          <Button className={classes.button} variant="contained" color="primary"
+           onClick={() => push(`/${'text'}`)} style={{ color: 'black', opacity: '1' }}>Create Quiz</Button>
+           </Paper>
         </Grid>
       </Grid>
     </div>
