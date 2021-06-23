@@ -56,12 +56,12 @@ function General({fetchData,questions,ScoreA,ScoreB}) {
           ScoreA={ScoreA}
           ScoreB={ScoreB}
           setTimerStart={setTimerStart}
-          /> : <CircularProgress color="secondary"/>
+          /> : <CircularProgress style={{color:'white',padding:'50px'}}/>
           }
          </Paper>   
           <Paper style={{backgroundColor: 'transparent',boxShadow: 'none',marginTop:'5%'}}>
             {!timerStart?
-          (<Button variant="contained" color="primary" className={classes.button}
+          (<Button variant="contained" color="primary" size="medium" className={classes.button}
           onClick={()=>{setTimerStart(true)}}
           >Start Timer</Button>):
             

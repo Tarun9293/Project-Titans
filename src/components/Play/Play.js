@@ -21,12 +21,12 @@ function Play() {
                         <Paper className={classes.paper} style={{backgroundColor: 'transparent',boxShadow: 'none'}}>   
                         <Button variant="contained" color="primary"
                             className={classes.button}
-                            onClick={() => push(`/${'General'}`)} style={{ color: 'black', opacity: '1' }}>General</Button>
+                            onClick={() => push(`/${'General'}`)} style={{ color: 'white', opacity: '1' }}>General</Button>
 
                         <Button variant="contained" color="primary"
                             className={classes.button}
           
-          onClick={() => push(`/${'worldcup'}`)} style={{ color: 'black', opacity: '1' }}>WorldCup</Button>
+          onClick={() => push(`/${'worldcup'}`)} style={{ color: 'white', opacity: '1' }}>WorldCup</Button>
           </Paper>
   </Grid>
   </Grid>

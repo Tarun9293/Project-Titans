@@ -35,9 +35,9 @@ function Home() {
           alignItems="baseline"
         ><Paper className={classes.paper} style={{backgroundColor: 'transparent',boxShadow: 'none'}}>
           <Button className={classes.button} variant="contained" color="primary"
-            onClick={() => push(`/${'Play'}`)} style={{ color: 'black', opacity: '1' }}>Play Quiz</Button>
+            onClick={() => push(`/${'Play'}`)} style={{ color: 'white', opacity: '1' }}>Play Quiz</Button>
           <Button className={classes.button} variant="contained" color="primary"
-           onClick={() => push(`/${'text'}`)} style={{ color: 'black', opacity: '1' }}>Create Quiz</Button>
+           onClick={() => push(`/${'text'}`)} style={{ color: 'white', opacity: '1' }}>Create Quiz</Button>
            </Paper>
         </Grid>
       </Grid>
