@@ -30,15 +30,21 @@ function Home() {
 
     <div className={classes.root}>
       <Grid container spacing={3} xs={12}>
-        <Grid item xs={12}       
-
-          alignItems="baseline"
-        ><Paper className={classes.paper} style={{backgroundColor: 'transparent',boxShadow: 'none'}}>
-          <Button className={classes.button} variant="contained" color="primary"
-            onClick={() => push(`/${'Play'}`)} style={{ color: 'white', opacity: '1' }}>Play Quiz</Button>
-          <Button className={classes.button} variant="contained" color="primary"
-           onClick={() => push(`/${'text'}`)} style={{ color: 'white', opacity: '1' }}>Create Quiz</Button>
-           </Paper>
+        <Grid item xs={12} alignItems="baseline" className="box1">
+          <div >
+            <ul className="box2">
+              <li className="category1"
+              onClick={() => push(`/${'Play'}`)}>Play Quiz</li>
+              <li className="category1"
+              onClick={() => push(`/${'text'}`)}>Create Quiz</li>
+            </ul>
+            {/* <div className="category1"
+              onClick={() => push(`/${'Play'}`)}>Play Quiz
+            </div>
+            <div className="category1"
+              onClick={() => push(`/${'text'}`)} >Create Quiz
+            </div> */}
+          </div>
         </Grid>
       </Grid>
     </div>

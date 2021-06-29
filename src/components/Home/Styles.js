@@ -20,7 +20,8 @@ import { makeStyles } from '@material-ui/core/styles';
       borderStyle: 'solid',
       width:'10%',
       whiteSpace: 'wrap',
-    }
+    },
+    
   }));
 
   export default useStyles
