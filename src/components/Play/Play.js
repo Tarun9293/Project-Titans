@@ -22,7 +22,6 @@ function Play() {
           <div >
             <div className="polaroid">
               <div className="container">
-                <img className="image" src="/src/general.jpg" alt="general"/>
                 <p className="category" onClick={() => push(`/${'General'}`)}>General</p>
               </div>
             </div>
