@@ -4,6 +4,7 @@ import WorldCup from './components/WorldCup/WorldCup'
 import Home from './components/Home/Home'
 import General from './components/General/General'
 import Play from './components/Play/Play'
+import Login from './components/Login/Login'
 import NavDrawer from './components/NavDrawer'
 import store from './redux/store'
 
@@ -25,9 +26,12 @@ function App() {
             {/* <NavDrawer /> */}
             <Switch>
               <Route exact path="/">
+                <Login />
+              </Route>
+              <Route path="/Home">
                 <Home />
               </Route>
-              <Route exact path="/Play">
+              <Route path="/Play">
                 <Play />
               </Route>
               <Route path="/General">

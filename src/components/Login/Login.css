@@ -1,0 +1,29 @@
+.bg {
+    background-image: url(/src/header.jpg); 
+    background-size:cover;
+height: 100vh;
+background-repeat: no-repeat;
+
+background-position: center;
+background-attachment: fixed;
+overflow-y: none;
+display: fixed;
+}
+
+.login {
+    
+    background-color: aliceblue;
+    /* opacity: 0.6; */
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 12px 30px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 600px) {
+    .bg {
+        background-color: black;
+    }
+}
