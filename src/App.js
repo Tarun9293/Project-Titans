@@ -31,10 +31,10 @@ function App() {
               <Route path="/Home">
                 <Home />
               </Route>
-              <Route path="/Play">
+              <Route exact path="/Play">
                 <Play />
               </Route>
-              <Route path="/General">
+              <Route path="/Play/General" component={General}>
                 <General />
               </Route>
               <Route path="/worldCup">

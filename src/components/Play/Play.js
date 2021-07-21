@@ -1,19 +1,20 @@
-import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import React ,{useState,useEffect}from 'react';
+import { fetchData,increaseScoreA,increaseScoreB} from '../../redux/general/generalActions';
 import useStyles from './Styles'
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import {connect} from 'react-redux'
 import {useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import './Play.css'
 
 
 
-function Play() {
+function Play({fetchData,questions,ScoreA,ScoreB}) {
   const classes = useStyles();
-  const {push}=useHistory()
+  const history=useHistory();
+  useEffect(() => {
+    fetchData()
+  },[])
     return (
       <div>
         <Grid container spacing={3} xs={12}>
@@ -22,17 +23,17 @@ function Play() {
           <div >
             <div className="polaroid">
               <div className="container">
-                <p className="category" onClick={() => push(`/${'General'}`)}>General</p>
+                <p className="category" onClick={() => history.push('/Play/General')}>General</p>
               </div>
             </div>
             <div className="polaroid">
               <div className="container">
-                <p className="category" onClick={() => push(`/${'General'}`)}>T20</p>
+                <p className="category" onClick={() => history.push(`/${'General'}`)}>T20</p>
               </div>
             </div>
             <div className="polaroid">
               <div className="container">
-                <p className="category" onClick={() => push(`/${'General'}`)}>Worldcup</p>
+                <p className="category" onClick={() => history.push(`/${'General'}`)}>Worldcup</p>
               </div>
             </div>
           </div> 
@@ -42,4 +43,13 @@ function Play() {
       );
 }
 
-export default Play
+const mapDispatchToProps =(dispatch)=>
+{
+  return{
+    fetchData: ()=> dispatch(fetchData()),
+    ScoreA:()=>dispatch(increaseScoreA()),
+    ScoreB:()=>dispatch(increaseScoreB())
+  }
+}
+
+export default connect(null,mapDispatchToProps)(Play)
